@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using FunProject.Domain.Mapper;
 
-namespace FunProject.Infrastructure.MapperAdapter
+namespace FunProject.Infrastructure.Mapper
 {
     public class MapperAdapter : IMapperAdapter
     {
@@ -18,7 +19,7 @@ namespace FunProject.Infrastructure.MapperAdapter
 
         public TDestination Map<TSource, TDestination>(TSource source)
         {
-            return _mapper.Map<TSource,TDestination>(source);
+            return _mapper.Map<TSource, TDestination>(source);
         }
 
         public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)

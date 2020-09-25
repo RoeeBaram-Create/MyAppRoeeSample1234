@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FunProject.Infrastructure.LoggerAdapter
+namespace FunProject.Domain.Logger
 {
     public interface ILoggerAdapter<T>
     {

@@ -1,4 +1,4 @@
-﻿namespace FunProject.Infrastructure.MapperAdapter
+﻿namespace FunProject.Domain.Mapper
 {
     public interface IMapperAdapter
     {

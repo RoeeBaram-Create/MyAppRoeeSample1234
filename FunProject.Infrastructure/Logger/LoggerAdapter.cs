@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FunProject.Domain.Logger;
+using Microsoft.Extensions.Logging;
 using System;
 
-namespace FunProject.Infrastructure.LoggerAdapter
+namespace FunProject.Infrastructure.Logger
 {
     public class LoggerAdapter<T> : ILoggerAdapter<T>
     {
