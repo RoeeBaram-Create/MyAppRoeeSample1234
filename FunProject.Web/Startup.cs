@@ -1,4 +1,5 @@
-﻿using FunProject.Application.Customers.Services;
+﻿using FunProject.Application.CustomersModule.Services;
+using FunProject.Application.CustomersModule.Services.Interfacies;
 using FunProject.Domain;
 using FunProject.Persistence;
 using Microsoft.AspNetCore.Builder;

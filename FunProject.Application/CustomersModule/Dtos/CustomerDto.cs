@@ -1,4 +1,4 @@
-﻿namespace FunProject.Application.Customers.Dtos
+﻿namespace FunProject.Application.CustomersModule.Dtos
 {
     public class CustomerDto
     {

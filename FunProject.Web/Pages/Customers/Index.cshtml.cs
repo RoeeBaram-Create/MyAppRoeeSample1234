@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FunProject.Domain.Entities;
-using FunProject.Application.Customers.Services;
+using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Dtos;
 
 namespace FunProject.Web.Pages.Customers
 {
@@ -10,12 +10,12 @@ namespace FunProject.Web.Pages.Customers
     {
         private readonly ICustomersService _customersService;
 
-        public IndexModel(ICustomersService costomersService)
+        public IndexModel(ICustomersService customersService)
         {
-            _customersService = costomersService;
+            _customersService = customersService;
         }
 
-        public IList<Customer> Customer { get;set; }
+        public IList<CustomerDto> Customer { get;set; }
 
         public async Task OnGetAsync()
         {

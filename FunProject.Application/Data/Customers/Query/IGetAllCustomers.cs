@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FunProject.Application.Customers.Data.Qeuries
+namespace FunProject.Application.Data.Customers.Query
 {
-    public interface IGetCustomersQuery
+    public interface IGetAllCustomers
     {
         Task<IList<Customer>> Get();
     }

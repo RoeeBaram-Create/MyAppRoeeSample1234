@@ -13,6 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunProject.Application", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunProject.Infrastructure", "FunProject.Infrastructure\FunProject.Infrastructure.csproj", "{0C5A526F-1B1C-4987-81B4-CE99B6C1B29B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EF6ADA2B-F625-4F19-8F5E-4D46E3E6A208}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{3A102282-CAAB-452A-A1D7-E7237BDC0BBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{9D26CD9B-487E-4689-9D51-E0839F6D835C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{BAA63195-BDDB-401D-9D2B-6ED648066F65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +50,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5083AD5E-7BEF-4B17-938E-1145C61AC0A7} = {3A102282-CAAB-452A-A1D7-E7237BDC0BBE}
+		{8B5E87B3-5517-4271-A5C5-4342B83943D5} = {EF6ADA2B-F625-4F19-8F5E-4D46E3E6A208}
+		{C8D64E5A-3497-42FF-BF6A-5A5282399FF2} = {9D26CD9B-487E-4689-9D51-E0839F6D835C}
+		{070105B7-B37C-4B71-8120-397DAC246049} = {EF6ADA2B-F625-4F19-8F5E-4D46E3E6A208}
+		{0C5A526F-1B1C-4987-81B4-CE99B6C1B29B} = {BAA63195-BDDB-401D-9D2B-6ED648066F65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FECB5D5C-3CBB-4039-A112-2C598C5D7566}

@@ -7,9 +7,4 @@
   <ItemGroup>
     <ProjectReference Include="..\FunProject.Domain\FunProject.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Customers\Data\Commands\" />
-  </ItemGroup>
-
 </Project>

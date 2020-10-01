@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapper\Mapping\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\FunProject.Application\FunProject.Application.csproj" />
     <ProjectReference Include="..\FunProject.Domain\FunProject.Domain.csproj" />
   </ItemGroup>
 
