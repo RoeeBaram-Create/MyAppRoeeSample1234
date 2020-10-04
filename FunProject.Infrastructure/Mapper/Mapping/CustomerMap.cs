@@ -9,6 +9,8 @@ namespace FunProject.Infrastructure.Mapper.Mapping
         public CustomerMap()
         {
             CreateMap<Customer, CustomerDto>();
+            
+            CreateMap<CustomerDto, Customer>();
         }
     }
 }

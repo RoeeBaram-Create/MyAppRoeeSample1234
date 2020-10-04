@@ -1,17 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FunProject.Domain.Entities;
+using FunProject.Application.CustomersModule.Dtos;
+using FunProject.Application.CustomersModule.Services.Interfacies;
 
 namespace FunProject.Web.Pages.Customers
 {
     public class CreateModel : PageModel
     {
-        private readonly Persistence.AppDbContext _context;
+        private readonly ICustomersService _customersService;
 
-        public CreateModel(Persistence.AppDbContext context)
+        public CreateModel(ICustomersService customersService)
         {
-            _context = context;
+            _customersService = customersService;
         }
 
         public IActionResult OnGet()
@@ -20,10 +21,8 @@ namespace FunProject.Web.Pages.Customers
         }
 
         [BindProperty]
-        public Customer Customer { get; set; }
+        public CustomerDto Customer { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -31,8 +30,7 @@ namespace FunProject.Web.Pages.Customers
                 return Page();
             }
 
-            _context.Customers.Add(Customer);
-            await _context.SaveChangesAsync();
+            await _customersService.CreateCustomer(Customer);
 
             return RedirectToPage("./Index");
         }
