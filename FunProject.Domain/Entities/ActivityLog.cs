@@ -1,7 +1,6 @@
-﻿using FunProject.Domain.Entities;
-using System;
+﻿using System;
 
-namespace FunProject.Persistence
+namespace FunProject.Domain.Entities
 {
     public class ActivityLog
     {

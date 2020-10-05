@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FunProject.Application.ActivityLogModule.Dtos;
+using FunProject.Domain.Entities;
 using FunProject.Domain.Enums;
-using FunProject.Persistence;
 
 namespace FunProject.Infrastructure.Mapper.Mapping
 {

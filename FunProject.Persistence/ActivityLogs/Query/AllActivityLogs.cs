@@ -1,4 +1,5 @@
 ﻿using FunProject.Application.Data.ActivityLogs.Query;
+using FunProject.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
