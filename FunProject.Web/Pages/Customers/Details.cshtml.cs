@@ -1,21 +1,21 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using FunProject.Domain.Entities;
+using FunProject.Application.CustomersModule.Dtos;
+using FunProject.Application.CustomersModule.Services.Interfacies;
 
 namespace FunProject.Web.Pages.Customers
 {
     public class DetailsModel : PageModel
     {
-        private readonly Persistence.AppDbContext _context;
+        private readonly ICustomersService _customersService;
 
-        public DetailsModel(Persistence.AppDbContext context)
+        public DetailsModel(ICustomersService customersService)
         {
-            _context = context;
+            _customersService = customersService;
         }
 
-        public Customer Customer { get; set; }
+        public CustomerDto Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,7 +24,7 @@ namespace FunProject.Web.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.Id == id);
+            Customer = await _customersService.GetCustomer(id);
 
             if (Customer == null)
             {
