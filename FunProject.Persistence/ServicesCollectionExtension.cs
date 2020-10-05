@@ -14,8 +14,10 @@ namespace FunProject.Persistence
             services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("FunProjectDataBase"));
             
             // data services
-            services.AddTransient<IGetAllCustomers, GetAllCustomers>();
+            services.AddTransient<ICustomerById, GetCustomer>();
+            services.AddTransient<IAllCustomers, AllCustomers>();
             services.AddTransient<ICreateCustomer, CreateCustomer>();
+            services.AddTransient<IDeleteCustomer, DeleteCustomer>();
         }
     }
 }

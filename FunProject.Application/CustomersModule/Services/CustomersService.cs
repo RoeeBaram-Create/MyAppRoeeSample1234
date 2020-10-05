@@ -11,24 +11,43 @@ namespace FunProject.Application.CustomersModule.Services
 {
     public class CustomersService : ICustomersService
     {
-        private readonly IGetAllCustomers _getCustomersQuery;
+        private readonly ICustomerById _customerById;
+        private readonly IAllCustomers _getAllCustomers;
         private readonly ICreateCustomer _createCustomer;
+        private readonly IDeleteCustomer _deleteCustomer;
         private readonly IMapperAdapter _mapperAdapter;
 
         public CustomersService(
-            IGetAllCustomers getCustomersQuery, 
+            ICustomerById customerById,
+            IAllCustomers allCustomers, 
             ICreateCustomer createCustomer,
+            IDeleteCustomer deleteCustomer,
             IMapperAdapter mapperAdapter)
         {
-            _getCustomersQuery = getCustomersQuery;
+            _customerById = customerById;
+            _getAllCustomers = allCustomers;
             _createCustomer = createCustomer;
+            _deleteCustomer = deleteCustomer;
             _mapperAdapter = mapperAdapter;
         }
 
         public async Task CreateCustomer(CustomerDto customer) => 
             await _createCustomer.Create(_mapperAdapter.Map<Customer>(customer));
 
-        public async Task<IList<CustomerDto>> GetCustomers() => 
-            _mapperAdapter.Map<IList<CustomerDto>>(await _getCustomersQuery.Get());
+        public async Task<CustomerDto> GetCustomer(int? id) => 
+            _mapperAdapter.Map<CustomerDto>(await _customerById.Get(id));
+
+        public async Task<IList<CustomerDto>> GetAllCustomers() => 
+            _mapperAdapter.Map<IList<CustomerDto>>(await _getAllCustomers.Get());
+
+        public async Task DeleteCustomer(int? id)
+        {
+            var customer = await _customerById.Get(id);
+            if (customer != null)
+            {
+                await _deleteCustomer.Delete(customer);
+                
+            }
+        }
     }
 }

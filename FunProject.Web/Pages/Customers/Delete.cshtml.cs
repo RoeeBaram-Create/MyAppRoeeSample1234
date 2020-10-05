@@ -1,22 +1,22 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using FunProject.Domain.Entities;
+using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Dtos;
 
 namespace FunProject.Web.Pages.Customers
 {
     public class DeleteModel : PageModel
     {
-        private readonly Persistence.AppDbContext _context;
+        private readonly ICustomersService _customersService;
 
-        public DeleteModel(Persistence.AppDbContext context)
+        public DeleteModel(ICustomersService customersService)
         {
-            _context = context;
+            _customersService = customersService;
         }
 
         [BindProperty]
-        public Customer Customer { get; set; }
+        public CustomerDto Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -25,7 +25,7 @@ namespace FunProject.Web.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.Id == id);
+            Customer = await _customersService.GetCustomer(id);
 
             if (Customer == null)
             {
@@ -41,13 +41,7 @@ namespace FunProject.Web.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customers.FindAsync(id);
-
-            if (Customer != null)
-            {
-                _context.Customers.Remove(Customer);
-                await _context.SaveChangesAsync();
-            }
+            await _customersService.DeleteCustomer(id);
 
             return RedirectToPage("./Index");
         }

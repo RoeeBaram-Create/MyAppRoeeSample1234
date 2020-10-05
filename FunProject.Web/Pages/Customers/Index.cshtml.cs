@@ -19,7 +19,7 @@ namespace FunProject.Web.Pages.Customers
 
         public async Task OnGetAsync()
         {
-            Customer = await _customersService.GetCustomers();
+            Customer = await _customersService.GetAllCustomers();
         }
     }
 }
