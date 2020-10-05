@@ -1,23 +1,22 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using FunProject.Domain.Entities;
+using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Dtos;
 
 namespace FunProject.Web.Pages.Customers
 {
     public class EditModel : PageModel
     {
-        private readonly Persistence.AppDbContext _context;
+        private readonly ICustomersService _customersService;
 
-        public EditModel(Persistence.AppDbContext context)
+        public EditModel(ICustomersService customersService)
         {
-            _context = context;
+            _customersService = customersService;
         }
 
         [BindProperty]
-        public Customer Customer { get; set; }
+        public CustomerDto Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -26,7 +25,7 @@ namespace FunProject.Web.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.Id == id);
+            Customer = await _customersService.GetCustomer(id);
 
             if (Customer == null)
             {
@@ -35,8 +34,6 @@ namespace FunProject.Web.Pages.Customers
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -44,30 +41,11 @@ namespace FunProject.Web.Pages.Customers
                 return Page();
             }
 
-            _context.Attach(Customer).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CustomerExists(Customer.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            // Task 1.
+            // Implement Update Customer logic in the same manner as all other actions (see Create, Delete pages)
+            // Model of this Page is CustmerDto and NOT Customer entity -> need mapping
 
             return RedirectToPage("./Index");
-        }
-
-        private bool CustomerExists(int id)
-        {
-            return _context.Customers.Any(e => e.Id == id);
         }
     }
 }
