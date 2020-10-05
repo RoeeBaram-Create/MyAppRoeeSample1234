@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Services.Interfaces;
 using FunProject.Application.CustomersModule.Dtos;
 
 namespace FunProject.Web.Pages.Customers

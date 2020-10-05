@@ -1,5 +1,5 @@
 ﻿using FunProject.Application.CustomersModule.Dtos;
-using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Services.Interfaces;
 using FunProject.Application.Data.Customers.Command;
 using FunProject.Application.Data.Customers.Query;
 using FunProject.Domain.Entities;

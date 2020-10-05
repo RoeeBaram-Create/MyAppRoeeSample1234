@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FunProject.Application.CustomersModule.Services.Interfacies
+namespace FunProject.Application.CustomersModule.Services.Interfaces
 {
     public interface ICustomersService
     {

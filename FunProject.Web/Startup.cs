@@ -1,5 +1,7 @@
-﻿using FunProject.Application.CustomersModule.Services;
-using FunProject.Application.CustomersModule.Services.Interfacies;
+﻿using FunProject.Application.ActivityLogModule.Services;
+using FunProject.Application.ActivityLogModule.Services.Interfaces;
+using FunProject.Application.CustomersModule.Services;
+using FunProject.Application.CustomersModule.Services.Interfaces;
 using FunProject.Domain;
 using FunProject.Persistence;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +20,7 @@ namespace FunProject.Web
 
             // application services
             services.AddTransient<ICustomersService, CustomersService>();
+            services.AddTransient<IActivityLogService, ActivityLogService>();
             
             services.AddRazorPages();
         }

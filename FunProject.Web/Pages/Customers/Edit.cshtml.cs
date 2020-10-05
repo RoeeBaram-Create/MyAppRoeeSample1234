@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Services.Interfaces;
 using FunProject.Application.CustomersModule.Dtos;
 
 namespace FunProject.Web.Pages.Customers
@@ -43,7 +43,7 @@ namespace FunProject.Web.Pages.Customers
 
             // Task 1.
             // Implement Update Customer logic in the same manner as all other actions (see Create, Delete pages)
-            // Model of this Page is CustmerDto and NOT Customer entity -> need mapping
+            // Model of this Page is CusotmerDto and NOT Customer entity -> need mapping
 
             return RedirectToPage("./Index");
         }

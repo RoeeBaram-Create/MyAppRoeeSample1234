@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FunProject.Application.CustomersModule.Dtos;
-using FunProject.Application.CustomersModule.Services.Interfacies;
+using FunProject.Application.CustomersModule.Services.Interfaces;
 
 namespace FunProject.Web.Pages.Customers
 {

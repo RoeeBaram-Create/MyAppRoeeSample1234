@@ -1,5 +1,7 @@
-﻿using FunProject.Application.Data.Customers.Command;
+﻿using FunProject.Application.Data.ActivityLogs.Query;
+using FunProject.Application.Data.Customers.Command;
 using FunProject.Application.Data.Customers.Query;
+using FunProject.Persistence.ActivityLogs.Query;
 using FunProject.Persistence.Customers.Command;
 using FunProject.Persistence.Customers.Query;
 using Microsoft.EntityFrameworkCore;
@@ -12,12 +14,14 @@ namespace FunProject.Persistence
         public static void AddPersistanceLayerServices(this IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("FunProjectDataBase"));
-            
+
             // data services
             services.AddTransient<ICustomerById, GetCustomer>();
             services.AddTransient<IAllCustomers, AllCustomers>();
             services.AddTransient<ICreateCustomer, CreateCustomer>();
             services.AddTransient<IDeleteCustomer, DeleteCustomer>();
+
+            services.AddTransient<IAllActivityLogs, AllActivityLogs>();
         }
     }
 }
