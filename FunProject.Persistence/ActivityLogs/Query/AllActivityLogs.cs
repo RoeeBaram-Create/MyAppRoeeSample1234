@@ -2,6 +2,7 @@
 using FunProject.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FunProject.Persistence.ActivityLogs.Query
@@ -17,7 +18,10 @@ namespace FunProject.Persistence.ActivityLogs.Query
 
         public async Task<IList<ActivityLog>> Get()
         {
-            return await _appDbContext.ActivityLogs.ToListAsync();
+            return await _appDbContext.ActivityLogs
+                .Include(i => i.Customer)
+                .OrderByDescending(x => x.Id)
+                .ToListAsync();
         }
     }
 }

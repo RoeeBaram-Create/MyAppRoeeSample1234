@@ -11,5 +11,6 @@ namespace FunProject.Application.ActivityLogModule.Dtos
         public string LastName { get; set; }
         public ActionType ActionType { get; set; }
         public DateTime ActivityDate { get; set; }
+        public string ActivityDateShortDate => ActivityDate.ToShortDateString();
     }
 }

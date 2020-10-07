@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace FunProject.Web
 {
@@ -30,6 +31,10 @@ namespace FunProject.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+                var sampleData = serviceScope.ServiceProvider.GetService<ISampleData>();
+                sampleData.SeedDataAsync();
             }
             else
             {
