@@ -30,7 +30,7 @@ namespace FunProject.Persistence
                 Id = 1,
                 CustomerId = 1,
                 ActivityDate = new DateTime(2016, 11, 9),
-                ActionType = (int)ActionType.Create,
+                ActionType = ActionType.Create,
             });
 
             _appDbContext.ActivityLogs.Add(new ActivityLog
@@ -38,7 +38,7 @@ namespace FunProject.Persistence
                 Id = 2,
                 CustomerId = 1,
                 ActivityDate = new DateTime(2020, 11, 3),
-                ActionType = (int)ActionType.Update,
+                ActionType = ActionType.Update,
             });
 
             await _appDbContext.SaveChangesAsync();

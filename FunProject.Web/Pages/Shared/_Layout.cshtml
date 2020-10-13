@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <body class="">
+    <style>
+
+        .bg-light {
+            background-color: transparent !important;
+        }
+
+        .mb-3, .my-3 {
+            margin-bottom: 0 !important;
+        }
+    </style>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light border-bottom box-shadow mb-3">
             <div class="container-fluid ">
@@ -29,7 +40,7 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid bg-light text-dark">
+    <div class="container-fluid bg-light text-dark" style="overflow-y: auto; height: calc(100vh - 115px);">
         <main role="main" class="pb-3 ">
             @RenderBody()
         </main>

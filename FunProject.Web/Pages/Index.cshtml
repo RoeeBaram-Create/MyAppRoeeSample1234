@@ -3,6 +3,151 @@
 @{
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Fun Project</h1>
+<style>
+    .card{
+        border: none!important;
+    }
+
+    .card-header {
+        padding: 0; 
+        margin-bottom: 0;
+        background-color: transparent; 
+        border-bottom: none; 
+    }
+</style>
+
+<h1 style="text-align: center;">Job Interview Test</h1>
+
+<div id="accordion">
+
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Question #1: S.O.L.I.D
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="align-self:center">
+            <div class="card" style="max-width: 72rem;border:none;">
+                <img class="card-img-top" src="~/Images/SOLID.png" alt="S.O.L.I.D">
+                <div class="card-body">
+                    <h5 class="card-title">S.O.L.I.D</h5>
+                    <p class="card-text">Explain S.O.L.I.D principles, what we gain when using solid princeples?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Question #2: IOC Container
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="align-self:center">
+            <div class="card" style="max-width: 72rem;border:none;">
+                <img class="card-img-top" src="~/Images/ioc-container.png" alt="IOC container">
+                <div class="card-body">
+                    <h5 class="card-title">IOC container</h5>
+                    <p class="card-text">Explain IOC container, what is it and why we would want to used it?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Question #3: Automapper
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" style="align-self:center">
+            <div class="card" style="max-width: 72rem;border:none;">
+                <img class="card-img-top" src="~/Images/automapper.jpg" alt="Automapper">
+                <div class="card-body">
+                    <h5 class="card-title">Automapper</h5>
+                    <p class="card-text">Explain AutoMapper, what is it for and why we would want to used it?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                    Question #4: Clean Architecture
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion" style="align-self:center">
+            <div class="card" style="max-width: 72rem;border:none;">
+                <img class="card-img-top" src="~/Images/CleanArchitecture.png" alt="Clean Architecture">
+                <div class="card-body">
+                    <h5 class="card-title">Clean Architecture</h5>
+                    <p class="card-text">Explain how it desinged, it's layers and responsibility of each layer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="taskOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTaskOne" aria-expanded="false" aria-controls="collapseTaskOne">
+                    Task #1
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTaskOne" class="collapse" aria-labelledby="headingTaskOne" data-parent="#accordion" style="align-self:center">
+            <div class="card" style="max-width: 72rem;border:none;">
+                <img class="card-img-top" src="~/Images/task.png" alt="Task #1">
+                <div class="card-body">
+                    <h5 class="card-title">Update Customer</h5>
+                    <p class="card-text">
+                        Implement Update Customer logic, in the same manner as all other actions (see Create, Delete pages)
+                        <br />
+                        <b>To start this task Goto: FunProject.Web->Pages->Customers->Edit.cshtml.cs</b>
+                        <br />
+                        <span style="color:red;"> Model of this Page is CusotmerDto and NOT Customer entity -> need mapping</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="taskTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTaskTwo" aria-expanded="false" aria-controls="collapseTaskTwo">
+                    Task #2
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTaskTwo" class="collapse" aria-labelledby="headingTaskTwo" data-parent="#accordion" style="align-self:center">
+            <div class="card" style="max-width: 72rem;border:none;">
+                <img class="card-img-top" src="~/Images/task.png" alt="Task #2">
+                <div class="card-body">
+                    <h5 class="card-title">New Requerment: Activity Log</h5>
+                    <p class="card-text">
+                        Add record to ActivityLog table for the following actions: Insert, Update and Delete on Customer records.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
+
+
+
+
+
+

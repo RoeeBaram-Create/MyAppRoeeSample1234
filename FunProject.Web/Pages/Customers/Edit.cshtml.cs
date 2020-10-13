@@ -41,9 +41,7 @@ namespace FunProject.Web.Pages.Customers
                 return Page();
             }
 
-            // Task 1.
-            // Implement Update Customer logic in the same manner as all other actions (see Create, Delete pages)
-            // Model of this Page is CusotmerDto and NOT Customer entity -> need mapping
+            // Task #1
 
             return RedirectToPage("./Index");
         }
