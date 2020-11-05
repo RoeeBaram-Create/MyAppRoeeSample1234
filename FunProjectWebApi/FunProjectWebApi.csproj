@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FunProject.Infrastructure\FunProject.Infrastructure.csproj" />
+    <ProjectReference Include="..\FunProject.Persistence\FunProject.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
