@@ -41,6 +41,8 @@ namespace FunProject.Web.Pages.Customers
                 return Page();
             }
 
+            await _customersService.EditCustomer(Customer);
+
             // Task #1
 
             return RedirectToPage("./Index");

@@ -1,5 +1,7 @@
 ﻿using FunProject.Application.Data.Customers.Command;
 using FunProject.Domain.Entities;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace FunProject.Persistence.Customers.Command

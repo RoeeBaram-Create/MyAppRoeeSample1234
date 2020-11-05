@@ -9,7 +9,7 @@ namespace FunProject.Web.Pages.Customers
     public class CreateModel : PageModel
     {
         private readonly ICustomersService _customersService;
-
+        
         public CreateModel(ICustomersService customersService)
         {
             _customersService = customersService;

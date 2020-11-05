@@ -1,4 +1,5 @@
-﻿using FunProject.Application.Data.ActivityLogs.Query;
+﻿using FunProject.Application.Creations;
+using FunProject.Application.Data.ActivityLogs.Query;
 using FunProject.Application.Data.Customers.Command;
 using FunProject.Application.Data.Customers.Query;
 using FunProject.Persistence.ActivityLogs.Query;
@@ -21,6 +22,9 @@ namespace FunProject.Persistence
             services.AddTransient<IAllCustomers, AllCustomers>();
             services.AddTransient<ICreateCustomer, CreateCustomer>();
             services.AddTransient<IDeleteCustomer, DeleteCustomer>();
+            services.AddTransient<IEditCustomer, EditCustomer>();
+
+            services.AddTransient<IActiviryLogCreation, ActiviryLogCreation>();
 
             services.AddTransient<IAllActivityLogs, AllActivityLogs>();
         }

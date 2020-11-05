@@ -1,12 +1,18 @@
-﻿using FunProject.Application.CustomersModule.Dtos;
+﻿using FunProject.Application.ActivityLogModule.Dtos;
+using FunProject.Application.Creations;
+using FunProject.Application.CustomersModule.Dtos;
 using FunProject.Application.CustomersModule.Services.Interfaces;
+using FunProject.Application.Data.ActivityLogs.Query;
 using FunProject.Application.Data.Customers.Command;
 using FunProject.Application.Data.Customers.Query;
 using FunProject.Domain.Entities;
+using FunProject.Domain.Enums;
 using FunProject.Domain.Logger;
 using FunProject.Domain.Mapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace FunProject.Application.CustomersModule.Services
@@ -17,16 +23,23 @@ namespace FunProject.Application.CustomersModule.Services
         private readonly IAllCustomers _getAllCustomers;
         private readonly ICreateCustomer _createCustomer;
         private readonly IDeleteCustomer _deleteCustomer;
+        private readonly IEditCustomer _editCustomer;
         private readonly IMapperAdapter _mapperAdapter;
         private readonly ILoggerAdapter<CustomersService> _logger;
+        private readonly IAllActivityLogs _allActivityLogs;
+        private readonly IActiviryLogCreation _activiryLogCreation;
+
 
         public CustomersService(
             ICustomerById customerById,
             IAllCustomers allCustomers, 
             ICreateCustomer createCustomer,
             IDeleteCustomer deleteCustomer,
+            IEditCustomer editCustomer,
             IMapperAdapter mapperAdapter,
-            ILoggerAdapter<CustomersService> logger)
+            ILoggerAdapter<CustomersService> logger,
+            IAllActivityLogs allActivityLogs,
+            IActiviryLogCreation activiryLogCreation)
         {
             _customerById = customerById;
             _getAllCustomers = allCustomers;
@@ -34,6 +47,10 @@ namespace FunProject.Application.CustomersModule.Services
             _deleteCustomer = deleteCustomer;
             _mapperAdapter = mapperAdapter;
             _logger = logger;
+            _editCustomer = editCustomer;
+            _allActivityLogs = allActivityLogs;
+            _activiryLogCreation = activiryLogCreation;
+
         }
 
         public async Task CreateCustomer(CustomerDto customer)
@@ -41,7 +58,13 @@ namespace FunProject.Application.CustomersModule.Services
             _logger.LogInformation("Method CreateCustomer was hit...");
             try
             {
-                await _createCustomer.Create(_mapperAdapter.Map<Customer>(customer));
+                Customer customerEntity = _mapperAdapter.Map<Customer>(customer);
+                await _createCustomer.Create(customerEntity);
+
+                ActivityLog activityLog = _activiryLogCreation.CreateActivityLog(customerEntity, ActionType.Create);
+
+               await _allActivityLogs.Add(activityLog);
+
             }
             catch (Exception ex)
             {
@@ -86,14 +109,39 @@ namespace FunProject.Application.CustomersModule.Services
                 var customer = await _customerById.Get(id);
                 if (customer != null)
                 {
+
                     await _deleteCustomer.Delete(customer);
+
+                    ActivityLog activityLog = _activiryLogCreation.CreateActivityLog(customer, ActionType.Delete);
+
+                    await _allActivityLogs.Add(activityLog);
+
                 }
+
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Mehtod DeleteCustomer failed");
                 throw;
             }
+        }
+
+        public async Task EditCustomer(CustomerDto customer)
+        {
+            _logger.LogInformation("Method EditCustomer was hit...");
+            try
+            {
+                Customer customerEntity = _mapperAdapter.Map<Customer>(customer);
+                await _editCustomer.Edit(customerEntity);
+                ActivityLog activityLog = _activiryLogCreation.CreateActivityLog(customerEntity, ActionType.Update);
+                await _allActivityLogs.Add(activityLog);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Method CreateCustomer failed");
+                throw;
+            }
+
         }
     }
 }
