@@ -31,6 +31,7 @@ namespace FunProject.Persistence
                 CustomerId = 1,
                 ActivityDate = new DateTime(2016, 11, 9),
                 ActionType = ActionType.Create,
+                FullName = "Donald Trump"
             });
 
             _appDbContext.ActivityLogs.Add(new ActivityLog
@@ -39,8 +40,10 @@ namespace FunProject.Persistence
                 CustomerId = 1,
                 ActivityDate = new DateTime(2020, 11, 3),
                 ActionType = ActionType.Update,
+                FullName = "Donald Trump"
             });
 
+       
             await _appDbContext.SaveChangesAsync();
         }
 

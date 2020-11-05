@@ -10,5 +10,6 @@ namespace FunProject.Application.CustomersModule.Services.Interfaces
         Task CreateCustomer(CustomerDto customer);
         Task<CustomerDto> GetCustomer(int? id);
         Task DeleteCustomer(int? id);
+        Task EditCustomer(CustomerDto customer);
     }
 }

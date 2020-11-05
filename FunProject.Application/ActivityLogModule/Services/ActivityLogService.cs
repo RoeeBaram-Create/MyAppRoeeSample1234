@@ -1,6 +1,7 @@
 ﻿using FunProject.Application.ActivityLogModule.Dtos;
 using FunProject.Application.ActivityLogModule.Services.Interfaces;
 using FunProject.Application.Data.ActivityLogs.Query;
+using FunProject.Domain.Entities;
 using FunProject.Domain.Logger;
 using FunProject.Domain.Mapper;
 using System;
@@ -35,6 +36,21 @@ namespace FunProject.Application.ActivityLogModule.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Method GetAllActivityLogs failed");
+                throw;
+            }
+        }
+
+        public async Task AddActivityLog(ActivityLogDto activityLogDto)
+        {
+            _logger.LogInformation("Method AddActivityLog was hit...");
+            try
+            {
+                ActivityLog activityLog = _mapperAdapter.Map<ActivityLog>(activityLogDto);
+                await _allActivityLogs.Add(activityLog);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Method AddActivityLog failed");
                 throw;
             }
         }

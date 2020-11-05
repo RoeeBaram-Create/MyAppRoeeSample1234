@@ -13,7 +13,6 @@ namespace FunProject.Web
         {
             services.AddInrustractureLayerServices();
             services.AddPersistanceLayerServices();
-
             services.AddRazorPages();
         }
 
